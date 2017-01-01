@@ -1,0 +1,25 @@
+{
+  "name": "image_filtering",
+  "version": "1.0.0",
+  "description": "Filtering of images through algorithmic processes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/papostolopoulos/image_filtering.git"
+  },
+  "author": "Paraskevas Apostolopoulos <papostolopoulos@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/papostolopoulos/image_filtering/issues"
+  },
+  "homepage": "https://github.com/papostolopoulos/image_filtering#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0"
+  }
+}
