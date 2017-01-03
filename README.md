@@ -27,3 +27,14 @@ https://labs.ideo.com/2014/06/04/painting-with-code/
 http://rectangleworld.com/blog/archives/category/generative-art
 - Edge detection https://codepen.io/taylorcoffelt/pen/EsCcr
 - Prisma filtering https://www.quora.com/How-do-Prisma-filters-work
+
+###Modules installed
+- body-parser: parses data from the server to the html page
+- cookie-parser: Parse Cookie header and populate req.cookies with an object keyed by the cookie names.
+- express: used for the server creation
+- express-session: stores session id, cookie and data on server
+- formidable: helps us upload image on server
+- handlebars, express-handlebars: connects different pieces of html to one file. Saves time from needing to modify multiple fillStyle
+- parseurl: Provides info on the url of the request object
+- fs: File system
+*/

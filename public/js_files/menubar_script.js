@@ -16,6 +16,7 @@ window.onload = function () {
   var viewSubMenu = document.getElementById("viewSubMenu");
   var helpMenu = document.getElementById("helpMenu");
   var helpSubMenu = document.getElementById("helpSubMenu");
+  var verticalMenus = document.getElementsByClassName("menuVertical");
 
   fileMenu.addEventListener("click", showFileMenu);
   editMenu.addEventListener("click", showEditMenu);
@@ -59,6 +60,28 @@ window.onload = function () {
   filterMenu.addEventListener("mouseover", showFilterMenuMouseOver);
   viewMenu.addEventListener("mouseover", showViewMenuMouseOver);
   helpMenu.addEventListener("mouseover", showHelpMenuMouseOver);
+
+
+  // fileMenu.addEventListener("mouseover", showMenuMouseOver);
+  // editMenu.addEventListener("mouseover", showMenuMouseOver);
+  // imageMenu.addEventListener("mouseover", showMenuMouseOver);
+  // layerMenu.addEventListener("mouseover", showMenuMouseOver);
+  // adjustmentMenu.addEventListener("mouseover", showMenuMouseOver);
+  // filterMenu.addEventListener("mouseover", showMenuMouseOver);
+  // viewMenu.addEventListener("mouseover", showMenuMouseOver);
+  // helpMenu.addEventListener("mouseover", showMenuMouseOver);
+  //
+  // function showMenuMouseOver() {
+  //   var verticalMenus = document.getElementsByClassName("menuVertical");
+  //   for (var i = 0; i < verticalMenus.length; i++) {
+  //     if (verticalMenus[i].style.visibility === "visible" || verticalMenus[i] !== this) {
+  //       verticalMenus[i].style.visibility = "hidden";
+  //       this.style.visibility = "visible";
+  //       console.log("logging this: ", this);
+  //       break;
+  //     }
+  //   }
+  // }
 
   function showFileMenuMouseOver () {
     if (editSubMenu.style.visibility === "visible") {
@@ -121,4 +144,19 @@ window.onload = function () {
       helpSubMenu.style.visibility = "visible";
     }
   }
+
+  function hideMenus() {
+    for (var i = 0; i < verticalMenus.length; i++) {
+      verticalMenus[i].addEventListener("click", hideIt);
+    }
+
+    function hideIt() {
+      if (this.style.visibility === "visible") {
+        this.style.visibility = "hidden";
+      }
+    }
+  }
+
+  hideMenus();
+
 };

@@ -1,29 +1,79 @@
 'use strict'
 
 const http = require('http');
-const fs = require('fs');
-const port = process.env.PORT || 8000;
 const path = require('path');
-// const express = require('express');
-// const app = express();
-// const morgan = require('morgan');
-// const bodyParser = require('body-parser');
-//
-// app.disable('x-powered-by');
-// app.use(morgan('short'));
-// app.use(bodyParser.json());
-//
-// app.set('view engine', 'ejs');
+
+//file system module
+const fs = require('fs');
+//port
+const port = process.env.PORT || 8000;
+//express middleware
+const express = require('express');
+const app = express();
+//module for merging different html in order to parse properly
+const handlebars = require('express-handlebars').create({
+                                                          defaultLayout: 'main'
+                                                        });
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
+//module for downloading images to server
+const formidable = require('formidable');
+//module to parse data in page
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({
+                                extended: true
+                                }
+));
+//module for cookies
+const credentials = require('./credentials.js');
+const cookieParser = require('cookie-parser');
+app.use(cookieParser(credentials.cookieSecret));
+//Block the header from containing information about the server
+app.disable('x-powered-by');
+
+app.use(express.static(__dirname + '/public'));
+// app.use(express.static(__dirname + '/assets'));
+
+app.get("/", function(req, res){
+  res.render('home');
+});
+
+function handleRequest(req, res) {
+  res.setHeader("Content-Type", "text/plain");
+  console.log("---------");
+  console.log(req.url);
+  var urlTwo = {};
+  var parametersString = req.url.slice(req.url.indexOf("?") + 1);
+  var parametersSplit = parametersString.split("&");
+  for (var i = 0; i < parametersSplit.length; i++) {
+    var paramElements = parametersSplit[i].split("=");
+    urlTwo[paramElements[0]] = paramElements[1].replace(/[%20]+/g, " ");
+  }
+  res.end(JSON.stringify(urlTwo));
+}
 
 
+app.get("/new_image", function (req, res) {
+  res.render('new_image');
+});
+
+
+app.use(function (req, res, next) {
+  console.log("looking for URL: " + req.url);
+});
+
+
+//this probably needs to go
 const pages = {
-  "untitled": path.join(__dirname, './assets/pages/01-file/untitled.html'),
+  "new_image": path.join(__dirname, '/new_image'),
   "about": path.join(__dirname, 'about1.html'),
   "faq": path.join(__dirname, 'faq1.html'),
 };
+
+
+
 const index = path.join(__dirname, 'index.html');
 
-console.log(pages["untitled"]);
 
 function handleRequest(req, res) {
   //function for 500 errors
@@ -70,8 +120,12 @@ function handleRequest(req, res) {
   }
 }
 
-var server = http.createServer(handleRequest);
+// var server = http.createServer(handleRequest);
 
-server.listen(port, function() {
-	console.log("I'm listening on port", port, "and for project 'Image-filtering'")
+// server.listen(port, function() {
+// 	console.log("I'm listening on port", port, "and for project 'Image-filtering'")
+// });
+
+app.listen(port, function () {
+  console.log("Listening on port", port, "for project 'Image filtering'");
 });
