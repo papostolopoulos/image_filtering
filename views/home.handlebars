@@ -8,21 +8,23 @@
       </canvas>
   <!-- </div> -->
 
+  <!-- File > new Image -->
   <div class="modal" id="newImage">
     <div class="modal-container">
       <form name="newImage" action="/process?form=newImage" method="post">
         <label for="newImageWidth">
-          Width: <input type="number" name="newImageWidth" id="newImageWidth" value="800" />
+          Width: <input type="number" name="newImageWidth" id="newImageWidth" value="800" size="6" maxlength="6"/> pixels.
         </label>
         <label for="newImageHeight"></label>
-        Height: <input type="number" name="newImageHeigth" id="newImageHeight" value="600" />
+        Height: <input type="number" name="newImageHeight" id="newImageHeight" value="600" size="6" maxlength="6"/> pixels.
         <br>
-        <input type="submit" name="newImageSubmit" value="Submit" />
+        <a href="#modal-close"><input type="submit" name="newImageSubmit" value="Submit" /></a>
         <a href="#modal-close"><input type="button" name="closeButton" value="Close" /></a>
       </form>
     </div>
   </div>
 
+  <!-- File > open Image -->
   <div class="modal" id="openImage">
     <div class="modal-container">
       <form name="openImage" action="/process?form=openImage" method="post">
