@@ -1,12 +1,36 @@
 
   {{>navbar}}
 
-  <canvas id="myCanvas" width = "150" height = "150">
-    <p>Sorry but the browser you are using does not support the &#60;canvas&#62; element.
-      You can use a browser like <a href="https://www.google.com/chrome/">Chrome</a> to support canvas</p>
-  </canvas>
+  <!-- <div id="container"> -->
+    <canvas id="myCanvas" width = "600" height = "400">
+      <p>Sorry but the browser you are using does not support the &#60;canvas&#62; element.
+        You can use a browser like <a href="https://www.google.com/chrome/">Chrome</a> to support canvas</p>
+      </canvas>
+  <!-- </div> -->
 
-  <div id="buttonDiv">Some text
-    <button id="submit">Submit an Image</button>
-    <button id="imgUpload">Upload an Image</button>
+  <div class="modal" id="newImage">
+    <div class="modal-container">
+      <form name="newImage" action="/process?form=newImage" method="post">
+        <label for="newImageWidth">
+          Width: <input type="number" name="newImageWidth" id="newImageWidth" value="800" />
+        </label>
+        <label for="newImageHeight"></label>
+        Height: <input type="number" name="newImageHeigth" id="newImageHeight" value="600" />
+        <br>
+        <input type="submit" name="newImageSubmit" value="Submit" />
+        <a href="#modal-close"><input type="button" name="closeButton" value="Close" /></a>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="openImage">
+    <div class="modal-container">
+      <form name="openImage" action="/process?form=openImage" method="post">
+        <label for="browseImage">
+          <input type="file" name="openImage" id="browseImage" value="browse for image" />
+        </label>
+        <input type="submit" name="openImageSubmit" value="Open" />
+        <a href="#modal-close"><input type="button" name="closeButton" value="Close" /></a>
+      </form>
+    </div>
   </div>

@@ -1,18 +1,20 @@
-(function() {
-  'use strict';
+console.log(`canvas`);
 
-  var submitButton = document.getElementById('submit');
-  var uploadButton = document.getElementById('imgUpload');
-
-  submitButton.addEventListener("click", function(e) {
-    e.preventDefault();
-  })
-
-  uploadButton.addEventListener("click", function(e) {
-    e.preventDefault();
-  })
-
-})();
+// (function() {
+//   'use strict';
+//
+//   var submitButton = document.getElementById('submit');
+//   var uploadButton = document.getElementById('imgUpload');
+//
+//   submitButton.addEventListener("click", function(e) {
+//     e.preventDefault();
+//   })
+//
+//   uploadButton.addEventListener("click", function(e) {
+//     e.preventDefault();
+//   })
+//
+// })();
 
 // var canvas = document.getElementById("myCanvas");
 // if (canvas.getContext) {
