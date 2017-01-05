@@ -16,9 +16,9 @@ Modals
   border-radius: 5px;
 
 
-  -webkit-transform: translate(-50%, -200%);
-  -ms-transform: translate(-50%, -200%);
-  transform: translate(-50%, -200%);
+  -webkit-transform: translate(-50%, -300%);
+  -ms-transform: translate(-50%, -300%);
+  transform: translate(-50%, -300%);
 
   -webkit-transition: -webkit-transform 200ms ease-out;
   transition: transform 200ms ease-out;

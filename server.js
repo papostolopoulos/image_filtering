@@ -1,25 +1,32 @@
 'use strict'
 
 const http = require('http');
+//Run this in node and observe path.normalize, path.dirname, path.basename, path.extname
 const path = require('path');
-
-//file system module
+//module Filesystem for reading files, modifying, deleting them
 const fs = require('fs');
 //port
 const port = process.env.PORT || 8000;
 //express middleware
 const express = require('express');
 const app = express();
+app.use(express.static(__dirname + '/public'));
+//module for working with file paths. It also normalizes the paths.
+//module for displaying the responses in server
+const logger = require('morgan');
+app.use(logger('dev'));
 //module for merging different html in order to parse properly
 const handlebars = require('express-handlebars').create({
                                                           defaultLayout: 'main'
                                                         });
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
+app.set('views', path.join(__dirname, 'views'));
 //module for downloading images to server
 const formidable = require('formidable');
-//module to parse data in page
+//module to parse data in page like JSON files
 const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
                                 extended: true
                                 }
@@ -31,8 +38,12 @@ app.use(cookieParser(credentials.cookieSecret));
 //Block the header from containing information about the server
 app.disable('x-powered-by');
 
-app.use(express.static(__dirname + '/public'));
-// app.use(express.static(__dirname + '/assets'));
+var routes = require('./routes/home')
+var mainCanvas = [];
+
+
+//------------------------------------------------------
+// app.use('/', routes.home);
 
 app.get("/", function(req, res){
   res.render('home');
@@ -42,8 +53,22 @@ app.post('/process', function (req, res) {
   console.log('Form input is:' + req.query.form);
   console.log("Canvas width requested: " + req.body.newImageWidth);
   console.log("Canvas height requested: " + req.body.newImageHeight);
-  res.redirect(303, '/');
+  var canvasDimensions = {}
+  canvasDimensions.width = req.body.newImageWidth;
+  canvasDimensions.height = req.body.newImageHeight;
+  if (canvasDimensions.width === 'undefined' || canvasDimensions.height === 'undefined') {
+    canvasDimensions.width = 800;
+    canvasDimensions.height = 600;
+  }
+  console.log(canvasDimensions);
+
+  // res.redirect(303, '/');
+  res.render('home',
+    {
+      canvasDimensions: canvasDimensions
+    });
 });
+
 
 
 app.use(function (req, res, next) {
@@ -51,6 +76,37 @@ app.use(function (req, res, next) {
 });
 
 
+//-----------------Errors-----------------------
+//404 error
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+//500 server errors
+
+//development error
+if (app.get('env') === 'development') {
+  app.use(function (err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
+//production error
+app.use(function (err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: err
+  })
+})
+
+//Port listen
 app.listen(port, function () {
   console.log("Listening on port", port, "for project 'Image filtering'");
 });

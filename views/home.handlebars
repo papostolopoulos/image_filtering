@@ -2,37 +2,13 @@
   {{>navbar}}
 
   <!-- <div id="container"> -->
-    <canvas id="myCanvas" width = "600" height = "400">
+    <canvas id="myCanvas" width = {{canvasDimensions.width}} height = {{canvasDimensions.height}}>
       <p>Sorry but the browser you are using does not support the &#60;canvas&#62; element.
         You can use a browser like <a href="https://www.google.com/chrome/">Chrome</a> to support canvas</p>
       </canvas>
   <!-- </div> -->
 
-  <!-- File > new Image -->
-  <div class="modal" id="newImage">
-    <div class="modal-container">
-      <form name="newImage" action="/process?form=newImage" method="post">
-        <label for="newImageWidth">
-          Width: <input type="number" name="newImageWidth" id="newImageWidth" value="800" size="6" maxlength="6"/> pixels.
-        </label>
-        <label for="newImageHeight"></label>
-        Height: <input type="number" name="newImageHeight" id="newImageHeight" value="600" size="6" maxlength="6"/> pixels.
-        <br>
-        <a href="#modal-close"><input type="submit" name="newImageSubmit" value="Submit" /></a>
-        <a href="#modal-close"><input type="button" name="closeButton" value="Close" /></a>
-      </form>
-    </div>
-  </div>
+  <h1>{{canvasDimensions.height}} YOYOYO</h1>
+  <h1>{{canvasDimensions.width}} YOYOYO</h1>
 
-  <!-- File > open Image -->
-  <div class="modal" id="openImage">
-    <div class="modal-container">
-      <form name="openImage" action="/process?form=openImage" method="post">
-        <label for="browseImage">
-          <input type="file" name="openImage" id="browseImage" value="browse for image" />
-        </label>
-        <input type="submit" name="openImageSubmit" value="Open" />
-        <a href="#modal-close"><input type="button" name="closeButton" value="Close" /></a>
-      </form>
-    </div>
-  </div>
+  {{>modals}}
