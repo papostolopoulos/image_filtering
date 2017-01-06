@@ -1,5 +1,146 @@
 console.log(`canvas`);
 
+var canvas = document.getElementById("myCanvas");
+var context = canvas.getContext('2d');
+var uploadedFile = document.getElementById("browseImage");
+var openButton = document.getElementById("openImageForm");
+
+initImageLoader();
+
+window.addEventListener("DOMContentLoader", initImageLoader);
+
+function initImageLoader() {
+  uploadedFile.addEventListener('change', uploadedFileFunction);
+
+  function uploadedFileFunction(ev) {
+    var file = ev.target.files[0];
+    openButton.addEventListener('submit', function (event) {
+      event.preventDefault();
+      handleFile(file);
+    });
+  }
+}
+
+function handleFile(file) {
+  var tempImageStore = new Image();
+  var imageType = /image.*/;
+
+  if (file.type.match(imageType)) {
+    var reader = new FileReader();
+
+//Set up onload function
+    reader.onloadend = function (ev) {
+      //Get the image width and height
+
+      // Draw image in canvas
+      // context.drawImage(ev.target.result,0,0);
+      tempImageStore.src = ev.target.result;
+      canvas.height = tempImageStore.height;
+      canvas.width = tempImageStore.width;
+      context.drawImage(tempImageStore,0,0);
+    }
+  }
+  reader.readAsDataURL(file);
+
+}
+
+//Save image
+var saveImage = document.getElementById('saveImage'); //This is the href
+console.log(saveImage);
+// saveImage.addEventListener("click", function() {
+//   console.log(document.getElementById('saveImage'));
+//   this.href = canvas.toDataURL();
+// }, true);
+
+
+var saveImageSubmit = document.getElementById('saveImageSubmit'); //submit button
+console.log(saveImageSubmit);
+// saveImageSubmit.addEventListener('click', function () {
+//   console.log("in the listener");
+//   var saveImageName = document.getElementById("saveImageName");
+//   var nameAttribute =
+//   console.log(saveImage.getAttribute("download"));
+//   saveImage.setAttribute("download", saveImageName.value);
+//   console.log(saveImage.getAttribute("download"));
+//   console.log(canvas.toDataURL());
+//
+//
+//   saveImage.href = canvas.toDataURL();
+// });
+
+
+saveImageSubmit.addEventListener('click', function () {
+  console.log("in the listener");
+  var saveImageName = document.getElementById("saveImageName");
+  var nameAttribute =
+  console.log(saveImage.getAttribute("download"));
+  saveImage.setAttribute("download", saveImageName.value);
+  console.log(saveImage.getAttribute("download"));
+  console.log();
+  var imageTitle = saveImage.getAttribute("download")
+  saveImage.href = canvas.toDataURL();
+  console.log(typeof canvas.toDataURL());
+  // var canvasInfo = JSON.parse(canvas.toDataURL());
+  // console.log(canvasInfo.data);
+
+  // function downloadCanvas(link, filename) {
+  //   console.log("in function");
+  //   link.href = canvas.toDataURL();
+  //   link.download = filename;
+  // }
+  //
+  // downloadCanvas(saveImage, imageTitle+".png");
+  saveImage.download = imageTitle+".png"
+}, true);
+
+// var canvas = document.getElementById("myCanvas");
+// var context = canvas.getContext('2d');
+//
+// window.addEventListener("DOMContentLoader", initImageLoader);
+//
+// function initImageLoader() {
+//   console.log("inside");
+//   var location = window.location.href.replace(/\/+$/, "");
+//   console.log(location);
+//   loadFile(location + "../images/blenders.jpg");
+// }
+//
+// function loadFile(file) {
+//   var tempImageStore = new Image();
+//
+//   // Set up the onload function
+//   tempImageStore.onload = function (ev) {
+//     // Get the image width and height
+//     canvas.width = ev.target.width;
+//     canvas.height = ev.target.height;
+//
+//     //Draw image in canvas
+//     context.draw.Image(ev.target,0,0);
+//   };
+//   tempImageStore.src = file;
+//   return true;
+// }
+
+
+
+// function doFirst() {
+//   var x = document.getElementById('myCanvas');
+//   console.log(x);
+//   var canvas = x.getContext('2d');
+//
+//   var pic = new Image();
+//   pic.src = "../public/images/blender.jpg"
+//   pic.addEventListener('load', drawImage, false);
+// }
+//
+// function drawImage() {
+//   canvas.drawImage(pic,0,0);
+// }
+//
+// window.addEventListener('load', doFirst, false);
+
+
+
 // (function() {
 //   'use strict';
 //

@@ -89,9 +89,7 @@ window.onload = function () {
     for (var i = 0; i < verticalMenus.length; i++) {
       if (verticalMenus[i].style.visibility === "visible" && this.subMenu.style.visibility === "hidden") {
         verticalMenus[i].style.visibility = "hidden";
-        // this.style.visibility = "visible";
         this.subMenu.style.visibility = "visible";
-        // break;
       }
     }
   }

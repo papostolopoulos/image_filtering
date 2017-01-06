@@ -1,14 +1,13 @@
 
   {{>navbar}}
 
-  <!-- <div id="container"> -->
-    <canvas id="myCanvas" width = {{canvasDimensions.width}} height = {{canvasDimensions.height}}>
-      <p>Sorry but the browser you are using does not support the &#60;canvas&#62; element.
-        You can use a browser like <a href="https://www.google.com/chrome/">Chrome</a> to support canvas</p>
-      </canvas>
-  <!-- </div> -->
 
-  <h1>{{canvasDimensions.height}} YOYOYO</h1>
-  <h1>{{canvasDimensions.width}} YOYOYO</h1>
 
+  <h1>Height: {{canvasDimensions.height}}</h1>
+  <h1>Width: {{canvasDimensions.width}}</h1>
+
+  {{>canvas}}
   {{>modals}}
+
+  <script type="text/javascript" src="/js_files/canvas_script.js"></script>
+  <script type="text/javascript" src="/js_files/menubar_script.js"></script>

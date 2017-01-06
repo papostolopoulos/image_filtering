@@ -38,18 +38,16 @@ app.use(cookieParser(credentials.cookieSecret));
 //Block the header from containing information about the server
 app.disable('x-powered-by');
 
-var routes = require('./routes/home')
-var mainCanvas = [];
-
 
 //------------------------------------------------------
-// app.use('/', routes.home);
 
 app.get("/", function(req, res){
   res.render('home');
 });
 
-app.post('/process', function (req, res) {
+
+//New image creation
+app.post('/newImage', function (req, res) {
   console.log('Form input is:' + req.query.form);
   console.log("Canvas width requested: " + req.body.newImageWidth);
   console.log("Canvas height requested: " + req.body.newImageHeight);
@@ -61,13 +59,47 @@ app.post('/process', function (req, res) {
     canvasDimensions.height = 600;
   }
   console.log(canvasDimensions);
-
-  // res.redirect(303, '/');
   res.render('home',
     {
       canvasDimensions: canvasDimensions
     });
 });
+
+// if (canvasDimensions.width === 'undefined' || canvasDimensions.height === 'undefined') {
+//   canvasDimensions.width = 800;
+//   canvasDimensions.height = 600;
+// }
+
+//Save image
+// app.post('/saveImage', function (req, res) {
+//   console.log('Save image input is:' + req.query.form);
+//   console.log("Name of the image is: " + req.body.saveImageName);
+//   console.log("type of image to save is: " + req.body.saveImageType);
+//   var saveImageObj = {}
+//   saveImageObj.name = req.body.saveImageName;
+//   saveImageObj.type = req.body.saveImageType;
+//
+//   console.log(saveImageObj);
+//   res.render('home',
+//     {
+//       saveImageObj: saveImageObj
+//     });
+// });
+
+// //Open image
+// app.post('/openImage', function (req, res) {
+//   console.log('Form input is:' + req.query.form);
+//   console.log("open image location: " + req.body.browseImage);
+//   // var canvasDimensions = {}
+//   // canvasDimensions.width = req.body.newImageWidth;
+//   // canvasDimensions.height = req.body.newImageHeight;
+//   // if (canvasDimensions.width === 'undefined' || canvasDimensions.height === 'undefined') {
+//   //   canvasDimensions.width = 800;
+//   //   canvasDimensions.height = 600;
+//   // }
+//   // console.log(canvasDimensions);
+//   res.render('home');
+// });
 
 
 

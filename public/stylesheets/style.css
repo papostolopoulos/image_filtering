@@ -136,6 +136,7 @@ ul.menuVertical {
   width: 220px;
   height: auto;
   visibility: hidden;
+	z-index: 1;
 }
 
 ul.menuVertical li a {
