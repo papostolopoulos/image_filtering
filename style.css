@@ -1,0 +1,11 @@
+body{
+    background-color: #000000;
+}
+canvas{
+    background-color: #000000;
+    height: 75vh;
+    width: 75vw
+}
+#text{
+    color: white;
+}
