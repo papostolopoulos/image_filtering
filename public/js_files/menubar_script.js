@@ -28,6 +28,10 @@ window.onload = function () {
   var viewSubMenu = document.getElementById("viewSubMenu");
   viewMenu.subMenu = viewSubMenu;
 
+  var fractalsMenu = document.getElementById("fractalsMenu");
+  var fractalsSubMenu = document.getElementById("fractalsSubMenu");
+  fractalsMenu.subMenu = fractalsSubMenu;
+
   var helpMenu = document.getElementById("helpMenu");
   var helpSubMenu = document.getElementById("helpSubMenu");
   helpMenu.subMenu = helpSubMenu;
@@ -41,6 +45,7 @@ window.onload = function () {
   adjustmentMenu.addEventListener("click", showAdjustmentMenu);
   filterMenu.addEventListener("click", showFilterMenu);
   viewMenu.addEventListener("click", showViewMenu);
+  fractalsMenu.addEventListener("click", showFractalsMenu);
   helpMenu.addEventListener("click", showHelpMenu);
 
   function showFileMenu() {
@@ -64,6 +69,9 @@ window.onload = function () {
   function showViewMenu() {
     viewSubMenu.style.visibility === "" || viewSubMenu.style.visibility === "hidden" ? viewSubMenu.style.visibility = "visible" : viewSubMenu.style.visibility = "hidden";
   }
+  function showFractalsMenu() {
+    fractalsSubMenu.style.visibility === "" || fractalsSubMenu.style.visibility === "hidden" ? fractalsSubMenu.style.visibility = "visible" : fractalsSubMenu.style.visibility = "hidden";
+  }
   function showHelpMenu() {
     helpSubMenu.style.visibility === "" || helpSubMenu.style.visibility === "hidden" ? helpSubMenu.style.visibility = "visible" : helpSubMenu.style.visibility = "hidden";
   }
@@ -78,6 +86,7 @@ window.onload = function () {
   adjustmentMenu.addEventListener("mouseover", showMenuMouseOver);
   filterMenu.addEventListener("mouseover", showMenuMouseOver);
   viewMenu.addEventListener("mouseover", showMenuMouseOver);
+  fractalsMenu.addEventListener("mouseover", showMenuMouseOver);
   helpMenu.addEventListener("mouseover", showMenuMouseOver);
   //
   function showMenuMouseOver() {

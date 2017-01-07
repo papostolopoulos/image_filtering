@@ -81,7 +81,7 @@ saveImageSubmit.addEventListener('click', function (event) {
   var saveImageName = document.getElementById("saveImageName"); //input for the value
   var saveImageType = document.getElementById("saveImageType"); //input for the image type to save
   downloadAnchor.setAttribute("download", saveImageName.value);
-  var imageTitle = downloadAnchor.getAttribute("download")
+  var imageTitle = downloadAnchor.getAttribute("download");
 
   downloadAnchor.href = canvas.toDataURL();
 
