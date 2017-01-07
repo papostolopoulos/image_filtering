@@ -79,12 +79,13 @@ saveImageSubmit.addEventListener('click', function (event) {
 
   console.log("in the listener");
   var saveImageName = document.getElementById("saveImageName"); //input for the value
+  var saveImageType = document.getElementById("saveImageType"); //input for the image type to save
   downloadAnchor.setAttribute("download", saveImageName.value);
   var imageTitle = downloadAnchor.getAttribute("download")
 
   downloadAnchor.href = canvas.toDataURL();
 
-  downloadAnchor.download = imageTitle+".png"
+  downloadAnchor.download = imageTitle + "." + saveImageType.value
   downloadAnchor.click();
   window.location = "#modal-close";
 }, true);
