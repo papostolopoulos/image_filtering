@@ -1,15 +1,23 @@
-//==============================================================================
-// create inverted image
-function invertColor() {
-  let imageObj = document.getElementById('origCanvas');
+var invertImage = document.getElementById("invertImage");
+invertImage.addEventListener("click", function () {
+  console.log("inside the 'invert image' event listener");
+  invertColor();
+});
 
-  let canvas = document.getElementById('invCanvas');  //secondary canvas
+
+
+// //==============================================================================
+// // create inverted image
+function invertColor() {
+  let imageObj = document.getElementById('myCanvas');
+
+  // let canvas = document.getElementById('invCanvas');  //secondary canvas
   let context = imageObj.getContext('2d'); //used to be canvas
 
   let imgW = imageObj.width;
   let imgH = imageObj.height;
-  canvas.width = imgW; //secondary canvas
-  canvas.height = imgH; //secondary canvas
+  // canvas.width = imgW; //secondary canvas
+  // canvas.height = imgH; //secondary canvas
 
   context.drawImage(imageObj, 0, 0);
 
@@ -39,5 +47,5 @@ function invertColor() {
   //   this.href = canvas.toDataURL('image/jpeg');
   // }, false);
 
-  return context.canvas.toDataURL('data/jpeg', 1.0);
+  // return context.canvas.toDataURL('data/jpeg', 1.0);
 }
