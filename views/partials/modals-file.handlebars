@@ -1,0 +1,63 @@
+<!-- File > new Image -->
+<div class="modal" id="newImage">
+  <div class="modal-container">
+    <form name="newImage" action="/newImage?form=newImage" method="post">
+      <label for="newImageWidth">
+        Width: <input type="number" name="newImageWidth" id="newImageWidth" value="800" size="6" maxlength="6"/> pixels.
+      </label>
+      <label for="newImageHeight"></label>
+      Height: <input type="number" name="newImageHeight" id="newImageHeight" value="600" size="6" maxlength="6"/> pixels.
+      <br>
+      <a href="#modal-close"><input type="submit" name="newImageSubmit" value="Submit" class="submitButton"/></a>
+      <a href="#modal-close"><input type="button" name="closeButton" value="Close" /></a>
+    </form>
+  </div>
+</div>
+
+<!-- File > open Image -->
+<div class="modal" id="openImage">
+  <div class="modal-container">
+    <form name="openImage" id="openImageForm" action="/openImage?form=openImage" method="post">
+      <label for="browseImage">
+        <input type="file" name="openImage" id="browseImage" value="browse for image" />
+      </label>
+      <a href="#modal-close"><input type="submit" name="openImageSubmit" value="Open" class="submitButton"/></a>
+      <a href="#modal-close"><input type="button" name="closeButton" value="Close" /></a>
+    </form>
+  </div>
+</div>
+
+<!-- File > open Image URL -->
+<div class="modal" id="openImageURL">
+  <div class="modal-container">
+    <form name="openImageURL" id="openImageURLForm" action="/openImageURL?form=openImageURL" method="get">
+      <label for="browseImage">
+        Enter your URL here: <input type="url" name="openImageURL" id="browseImageURL" />
+      </label>
+      <a href="#modal-close"><input type="submit" name="openImageSubmit" value="Open" class="submitButton"/></a>
+      <a href="#modal-close"><input type="button" name="closeButton" value="Close" /></a>
+    </form>
+  </div>
+</div>
+
+<!-- File > save Image -->
+<div class="modal" id="saveMe">
+  <div class="modal-container">
+    <form name="saveImage">
+      <label for="saveImageName">
+        Image name: <input type="text" name="saveImageName" id="saveImageName" />
+      </label>
+      <label for="saveImageType">
+        <select class="" name="saveImageType" id="saveImageType">
+          <option value="jpg">jpg</option>
+          <option value="png">png</option>
+          <option value="bmp">bmp</option>
+          <option value="gif">gif</option>
+          <option value="jpeg">jpeg</option>
+        </select>
+      </label>
+      <a href="#modal-close"><input type="submit" name="saveImageSubmit" id="saveImageSubmit" class="submitButton" value="Save" /></a>
+      <a href="#modal-close"><input type="button" name="closeButton" value="Close" /></a>
+    </form>
+  </div>
+</div>

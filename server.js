@@ -69,8 +69,6 @@ app.post('/newImage', function (req, res) {
     });
 });
 
-
-
 // Save image
 // app.get('/saveMe', function (req, res) {
 //   console.log(req.query);
