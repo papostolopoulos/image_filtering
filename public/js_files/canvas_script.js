@@ -1,12 +1,15 @@
 console.log(`canvas`);
 
-var canvas = document.getElementById("myCanvas");
-var context = canvas.getContext('2d');
+const canvas = document.getElementById("myCanvas");
+const context = canvas.getContext('2d');
+const img = new Image();
 var uploadedFile = document.getElementById("browseImage");
 var openButton = document.getElementById("openImageForm");
+var openURLButton = document.getElementById("openImageURLForm");
 
+
+//----------------OPEN IMAGE----------------
 initImageLoader();
-
 window.addEventListener("DOMContentLoader", initImageLoader);
 
 function initImageLoader() {
@@ -17,6 +20,7 @@ function initImageLoader() {
     openButton.addEventListener('submit', function (event) {
       event.preventDefault();
       handleFile(file);
+      window.location = "#modal-close";
     });
   }
 }
@@ -44,54 +48,74 @@ function handleFile(file) {
 
 }
 
-//Save image
+//----------------OPEN IMAGE FROM URL----------------
+openURLButton.addEventListener("submit", function (event) {
+  event.preventDefault()
+  var openImageURL = document.getElementById("browseImageURL");
+  console.log(openImageURL.value);
+  console.log("in the form");
+  img.onload = function () {
+    canvas.height = img.height;
+    canvas.width = img.width;
+    context.drawImage(img,0,0);
+    window.location = "#modal-close";
+  }
+  img.src = openImageURL.value;
+  console.log(img);
+});
+
+
+////----------------SAVE IMAGE----------------
 var saveImage = document.getElementById('saveImage'); //This is the href
 console.log(saveImage);
-// saveImage.addEventListener("click", function() {
-//   console.log(document.getElementById('saveImage'));
-//   this.href = canvas.toDataURL();
-// }, true);
-
-
 var saveImageSubmit = document.getElementById('saveImageSubmit'); //submit button
 console.log(saveImageSubmit);
-// saveImageSubmit.addEventListener('click', function () {
-//   console.log("in the listener");
-//   var saveImageName = document.getElementById("saveImageName");
-//   var nameAttribute =
-//   console.log(saveImage.getAttribute("download"));
-//   saveImage.setAttribute("download", saveImageName.value);
-//   console.log(saveImage.getAttribute("download"));
-//   console.log(canvas.toDataURL());
-//
-//
-//   saveImage.href = canvas.toDataURL();
-// });
 
 
-saveImageSubmit.addEventListener('click', function () {
+saveImageSubmit.addEventListener('click', function (event) {
+  event.preventDefault();
+  event.stopPropagation();
+  var downloadAnchor = document.createElement("a");
+
   console.log("in the listener");
-  var saveImageName = document.getElementById("saveImageName");
-  var nameAttribute =
-  console.log(saveImage.getAttribute("download"));
-  saveImage.setAttribute("download", saveImageName.value);
-  console.log(saveImage.getAttribute("download"));
-  console.log();
-  var imageTitle = saveImage.getAttribute("download")
-  saveImage.href = canvas.toDataURL();
-  console.log(typeof canvas.toDataURL());
-  // var canvasInfo = JSON.parse(canvas.toDataURL());
-  // console.log(canvasInfo.data);
+  var saveImageName = document.getElementById("saveImageName"); //input for the value
+  downloadAnchor.setAttribute("download", saveImageName.value);
+  var imageTitle = downloadAnchor.getAttribute("download")
 
-  // function downloadCanvas(link, filename) {
-  //   console.log("in function");
-  //   link.href = canvas.toDataURL();
-  //   link.download = filename;
-  // }
-  //
-  // downloadCanvas(saveImage, imageTitle+".png");
-  saveImage.download = imageTitle+".png"
+  downloadAnchor.href = canvas.toDataURL();
+
+  downloadAnchor.download = imageTitle+".png"
+  downloadAnchor.click();
+  window.location = "#modal-close";
 }, true);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // var canvas = document.getElementById("myCanvas");
 // var context = canvas.getContext('2d');

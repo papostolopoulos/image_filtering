@@ -14,6 +14,7 @@ Modals
   left: 50%;
   padding: 20px;
   border-radius: 5px;
+  z-index: 1;
 
 
   -webkit-transform: translate(-50%, -300%);
@@ -51,4 +52,6 @@ p {
   margin-top: 0;
 }
 
-#modal-close {}
+#modal-close {
+
+}

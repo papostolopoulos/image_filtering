@@ -94,6 +94,8 @@ window.onload = function () {
     }
   }
 
+
+
 //These are not needed after figuring out the above loop
   // fileMenu.addEventListener("mouseover", showFileMenuMouseOver);
   // editMenu.addEventListener("mouseover", showEditMenuMouseOver);

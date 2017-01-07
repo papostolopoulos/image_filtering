@@ -27,10 +27,23 @@
   </div>
 </div>
 
+<!-- File > open Image URL -->
+<div class="modal" id="openImageURL">
+  <div class="modal-container">
+    <form name="openImageURL" id="openImageURLForm" action="/openImageURL?form=openImageURL" method="get">
+      <label for="browseImage">
+        Enter your URL here: <input type="url" name="openImageURL" id="browseImageURL" />
+      </label>
+      <a href="#modal-close"><input type="submit" name="openImageSubmit" value="Open" class="submitButton"/></a>
+      <a href="#modal-close"><input type="button" name="closeButton" value="Close" /></a>
+    </form>
+  </div>
+</div>
+
 <!-- File > save Image -->
 <div class="modal" id="saveMe">
   <div class="modal-container">
-    <form name="saveImage" action="/saveImage?form=saveImage" method="post">
+    <form name="saveImage">
       <label for="saveImageName">
         Image name: <input type="text" name="saveImageName" id="saveImageName" />
       </label>

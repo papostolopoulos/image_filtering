@@ -42,6 +42,10 @@ app.disable('x-powered-by');
 //------------------------------------------------------
 
 app.get("/", function(req, res){
+  // if (canvasDimensions.width === 'undefined' || canvasDimensions.height === 'undefined') {
+  //   canvasDimensions.width = 800;
+  //   canvasDimensions.height = 600;
+  // }
   res.render('home');
 });
 
@@ -65,25 +69,21 @@ app.post('/newImage', function (req, res) {
     });
 });
 
-// if (canvasDimensions.width === 'undefined' || canvasDimensions.height === 'undefined') {
-//   canvasDimensions.width = 800;
-//   canvasDimensions.height = 600;
-// }
 
-//Save image
-// app.post('/saveImage', function (req, res) {
+
+// Save image
+// app.get('/saveMe', function (req, res) {
+//   console.log(req.query);
 //   console.log('Save image input is:' + req.query.form);
 //   console.log("Name of the image is: " + req.body.saveImageName);
 //   console.log("type of image to save is: " + req.body.saveImageType);
-//   var saveImageObj = {}
-//   saveImageObj.name = req.body.saveImageName;
-//   saveImageObj.type = req.body.saveImageType;
-//
-//   console.log(saveImageObj);
-//   res.render('home',
-//     {
-//       saveImageObj: saveImageObj
-//     });
+// //   var saveImageObj = {}
+// //   saveImageObj.name = req.body.saveImageName;
+// //   saveImageObj.type = req.body.saveImageType;
+// //
+// //   console.log(saveImageObj);
+//   res.render("/#modal-close");
+//   // res.redirect(301, '/');
 // });
 
 // //Open image
