@@ -1,0 +1,17 @@
+svg#fractal {
+ height: 800px; width: 800px;
+}
+svg path.dragon {
+ /*stroke: undefined;*/
+ stroke-width: 5
+}
+#main{
+    float: left;
+}
+
+svg{
+    background-color: #000000
+}
+body{
+    background-color: #000000
+}

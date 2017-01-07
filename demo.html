@@ -1,0 +1,96 @@
+<html><!-- Kevin Cantu (c) 2011 -->
+<head>
+   <link rel="stylesheet" type="text/css" href="./dragonCSS.css">
+   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+   <script src='./dragon.js'></script>
+   <script src='./script.js'></script>
+
+</head>
+   <body>
+      <div>
+         <h1>Dragon Curve</h1>
+         <div>
+            <svg xmlns='http://www.w3.org/2000/svg' id='fractal'></svg>
+         </div>
+         <!-- <script>
+            DRAGON.fractal('fractal', [100, 300], [500, 300], 15, false, 700);
+         </script> -->
+      </div>
+      <div>
+        <div id="main">
+        <form action="#" method="post" id="formOne" class="formOne">
+         Left Parameter 1:
+         <select id="lp1">
+            <option value="0.5">1/2</option>
+           <option value="0.0125">1/8</option>
+           <option value="0.25">1/4</option>
+           <option value="0.033">1/3</option>
+        </select>
+        <br>
+         Left Parameter 2:
+         <select id="lp2">
+            <option value="0.5">1/2</option>
+            <option value="0.0125">1/8</option>
+            <option value="0.25">1/4</option>
+            <option value="0.033">1/3</option>
+         </select>
+         <br>
+         Left Parameter 3:
+         <select id="lp3">
+            <option value="0.5">1/2</option>
+            <option value="0.0125">1/8</option>
+            <option value="0.25">1/4</option>
+            <option value="0.033">1/3</option>
+         </select>
+         <br>
+         Left Parameter 4:
+         <select id="lp4">
+            <option value="0.5">1/2</option>
+            <option value="0.0125">1/8</option>
+            <option value="0.25">1/4</option>
+            <option value="0.033">1/3</option>
+        </select><br>
+         <!-- <input type="submit" align="right" class="btn" value="Submit Values" name="submit"> -->
+        <!-- </form> -->
+        </div>
+        <div id="main">
+        <!-- <form action="#" method="post" id="formTwo" class="formTwo"> -->
+         Right Parameter 1:
+         <select id="rp1">
+            <option value="0.5">1/2</option>
+            <option value="0.0125">1/8</option>
+            <option value="0.25">1/4</option>
+            <option value="0.033">1/3</option>
+        </select>
+        <br>
+         Right Parameter 2:
+         <select id="rp2">
+            <option value="0.5">1/2</option>
+            <option value="0.0125">1/8</option>
+            <option value="0.25">1/4</option>
+            <option value="0.033">1/3</option>
+         </select>
+         <br>
+         Right Parameter 3:
+         <select id="rp3">
+            <option value="0.5">1/2</option>
+            <option value="0.0125">1/8</option>
+            <option value="0.25">1/4</option>
+            <option value="0.033">1/3</option>
+         </select>
+         <br>
+         Right Parameter 4:
+         <select id="rp4">
+            <option value="0.5">1/2</option>
+            <option value="0.0125">1/8</option>
+            <option value="0.25">1/4</option>
+            <option value="0.033">1/3</option>
+        </select><br>
+        All default values for parameters are 1/2<br>
+         <input type="submit" align="right" id="btn" value="Change your parameters!" name="submit">
+         <a id="dl-original" download="original.jpg">Save Image</a>
+        </form>
+        </div>
+      </div>
+   </body>
+</html>
