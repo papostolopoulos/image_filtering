@@ -16,9 +16,10 @@ app.use(express.static(__dirname + '/public'));
 const logger = require('morgan');
 app.use(logger('dev'));
 //module for merging different html in order to parse properly
-const handlebars = require('express-handlebars').create({
-                                                          defaultLayout: 'main'
-                                                        });
+const handlebars = require('express-handlebars')
+  .create({
+    defaultLayout: 'main'
+  });
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
@@ -28,9 +29,8 @@ const formidable = require('formidable');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-                                extended: true
-                                }
-));
+  extended: true
+}));
 //module for cookies
 const credentials = require('./credentials.js');
 const cookieParser = require('cookie-parser');
@@ -41,7 +41,7 @@ app.disable('x-powered-by');
 
 //------------------------------------------------------
 
-app.get("/", function(req, res){
+app.get("/", function(req, res) {
   // if (canvasDimensions.width === 'undefined' || canvasDimensions.height === 'undefined') {
   //   canvasDimensions.width = 800;
   //   canvasDimensions.height = 600;
@@ -51,7 +51,7 @@ app.get("/", function(req, res){
 
 
 //New image creation
-app.post('/newImage', function (req, res) {
+app.post('/newImage', function(req, res) {
   console.log('Form input is:' + req.query.form);
   console.log("Canvas width requested: " + req.body.newImageWidth);
   console.log("Canvas height requested: " + req.body.newImageHeight);
@@ -63,10 +63,9 @@ app.post('/newImage', function (req, res) {
     canvasDimensions.height = 600;
   }
   console.log(canvasDimensions);
-  res.render('home',
-    {
-      canvasDimensions: canvasDimensions
-    });
+  res.render('home', {
+    canvasDimensions: canvasDimensions
+  });
 });
 
 // Save image
@@ -101,7 +100,7 @@ app.post('/newImage', function (req, res) {
 
 
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   console.log("looking for URL: " + req.url);
 });
 
@@ -118,7 +117,7 @@ app.use(function(req, res, next) {
 
 //development error
 if (app.get('env') === 'development') {
-  app.use(function (err, req, res, next) {
+  app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -128,7 +127,7 @@ if (app.get('env') === 'development') {
 }
 
 //production error
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
@@ -137,6 +136,6 @@ app.use(function (err, req, res, next) {
 })
 
 //Port listen
-app.listen(port, function () {
+app.listen(port, function() {
   console.log("Listening on port", port, "for project 'Image filtering'");
 });
