@@ -1,25 +1,35 @@
-
 svg#svgid {
- height: 800px; width: 800px;
+  height: inherit;
+  width: inherit;
+  /*height: 100%;*/
+  /*width: 100%;*/
 }
+
 svg path.dragon {
- /*stroke: undefined;*/
- stroke-width: 5
+  /*stroke: undefined;*/
+  stroke-width: 5;
 }
+
+
 /*#main{
     float: left;
 }*/
 
+
 /*svg{
     background-color: #000000
 }*/
+
+
 /*body{
     background-color: #000000
 }*/
+
+
 /*#main{
     color: #FFFFFF;
 }*/
 
 svg {
-  z-index: 1;
+  /*z-index: 1;*/
 }
