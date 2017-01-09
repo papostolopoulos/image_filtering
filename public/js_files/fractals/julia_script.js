@@ -1,5 +1,5 @@
     "use strict";
-    // var canvas = document.getElementById('myCanvas')
+    var canvas = document.getElementById('myCanvas')
     var ctx = canvas.getContext("2d");
     var height = canvas.height;
     var width = canvas.width;

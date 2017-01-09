@@ -1,8 +1,9 @@
-var brightnator = document.getElementById("brightnessForm");
+var brightnessForm = document.getElementById("brightnessForm");
 var brightnessInput = document.getElementById("brightnessInput");
 var brightnessValue = document.getElementById("brightnessValue");
 
 brightnessInput.addEventListener("click", function () {
+  console.log("in the input");
   brightnessValue.setAttribute("value", brightnessInput.value);
 
   brightnessInput.addEventListener("mousemove", function () {
@@ -10,14 +11,14 @@ brightnessInput.addEventListener("click", function () {
   });
 });
 
-brightnator.addEventListener("submit", function (event) {
+brightnessForm.addEventListener("submit", function (event) {
   console.log(brightnessInput.value);
   event.preventDefault();
   console.log("in the brightnator function");
   console.log(brightnessInput.value);
   console.log(brightnessValue.value);
 
-  adjBrightness(brightnessInput.value);
+  adjBrightness(Number(brightnessInput.value));
   window.location = "#modal-close";
 
 });

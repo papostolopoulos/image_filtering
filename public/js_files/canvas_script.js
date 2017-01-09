@@ -1,5 +1,3 @@
-console.log(`canvas`);
-
 const canvas = document.getElementById("myCanvas");
 const context = canvas.getContext('2d');
 const img = new Image();
@@ -26,7 +24,7 @@ function initImageLoader() {
 }
 
 function handleFile(file) {
-  var tempImageStore = new Image();
+  var tempImageStore = new Image ();
   var imageType = /image.*/;
 
   if (file.type.match(imageType)) {
@@ -67,9 +65,7 @@ openURLButton.addEventListener("submit", function (event) {
 
 ////----------------SAVE IMAGE----------------
 var saveImage = document.getElementById('saveImage'); //This is the href
-console.log(saveImage);
 var saveImageSubmit = document.getElementById('saveImageSubmit'); //submit button
-console.log(saveImageSubmit);
 
 
 saveImageSubmit.addEventListener('click', function (event) {
