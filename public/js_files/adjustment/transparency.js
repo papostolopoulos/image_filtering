@@ -1,7 +1,6 @@
 var transparencyForm = document.getElementById("transparencyForm");
 var transparencyInput = document.getElementById("transparencyInput");
 var transparencyValue = document.getElementById("transparencyValue");
-console.log(transparencyInput);
 
 transparencyInput.addEventListener("click", function () {
   transparencyValue.setAttribute("value", transparencyInput.value);
