@@ -1,4 +1,4 @@
-var colorBalanceVar = document.getElementById("colorBalanceForm");
+var colorBalanceForm = document.getElementById("colorBalanceForm");
 var colorBalanceRedInput = document.getElementById("colorBalanceRedInput");
 var colorBalanceRedValue = document.getElementById("colorBalanceRedValue");
 var colorBalanceGreenInput = document.getElementById("colorBalanceGreenInput");
@@ -30,7 +30,7 @@ colorBalanceBlueInput.addEventListener("click", function () {
   });
 });
 
-colorBalanceVar.addEventListener("submit", function (event) {
+colorBalanceForm.addEventListener("submit", function (event) {
   event.preventDefault();
   console.log("in the color balance function");
 

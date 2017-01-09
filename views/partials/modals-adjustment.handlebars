@@ -15,6 +15,36 @@
 </div>
 
 <!-- Adjustment > Contrast -->
+<div class="modal" id="contrastAdjust">
+  <div class="modal-container">
+    <form name="contrastForm" id="contrastForm">
+      <label for="contrastRedInput">
+        Red: <input type="range" min="-100" value="0" max="100" step="1" name="contrastRedInput" id="contrastRedInput"/>
+      </label>
+      <label for="contrastRedValue">
+        <input type="number" size="3" width="3" min="-100" value="0" max="100" name="contrastRedValue" id="contrastRedValue"/>
+      </label>
+      <br>
+      <label for="contrastGreenInput">
+        Green: <input type="range" min="-100" value="0" max="100" step="1" name="contrastGreenInput" id="contrastGreenInput"/>
+      </label>
+      <label for="contrastGreenValue">
+        <input type="number" size="3" width="3" min="-100" value="0" max="100" name="contrastGreenValue" id="contrastGreenValue"/>
+      </label>
+      <br>
+      <label for="contrastBlueInput">
+        Green: <input type="range" min="-100" value="0" max="100" step="1" name="contrastBlueInput" id="contrastBlueInput"/>
+      </label>
+      <label for="contrastBlueValue">
+        <input type="number" size="3" width="3" min="-100" value="0" max="100" name="contrastBlueValue" id="contrastBlueValue"/>
+      </label>
+      <br>
+      <a href="#modal-close"><input type="submit" name="contrastSubmit" value="Submit" class="submitButton"/></a>
+      <a href="#modal-close"><input type="button" name="closeButton" value="Close" /></a>
+    </form>
+  </div>
+</div>
+
 
 <!-- Adjustment > Transparency -->
 <div class="modal" id="transparencyAdjust">
@@ -24,7 +54,7 @@
         Transparency: <input type="range" min="0" value="0" max="255" step="1" name="transparencyInput" id="transparencyInput"/>
       </label>
       <label for="transparencyValue">
-        <input type="number" size="3" width="3" value="0" name="transparencyValue" id="transparencyValue"/>
+        <input type="number" size="3" width="3" min="0" value="0" max="255" name="transparencyValue" id="transparencyValue"/>
       </label>
       <a href="#modal-close"><input type="submit" name="transparencySubmit" value="Submit" class="submitButton"/></a>
       <a href="#modal-close"><input type="button" name="closeButton" value="Close" /></a>
@@ -36,28 +66,28 @@
 <!-- Adjustment > Saturation -->
 
 <!-- Adjustment > Color Balance -->
-<div class="modal" id="colorBalance">
+<div class="modal" id="colorBalanceAdjust">
   <div class="modal-container">
     <form name="colorBalanceForm" id="colorBalanceForm">
       <label for="colorBalanceRedInput">
         Red: <input type="range" min="-255" value="0" max="255" step="1" name="colorBalanceRedInput" id="colorBalanceRedInput"/>
       </label>
       <label for="colorBalanceRedValue">
-        <input type="number" size="3" width="3" value="0" name="colorBalanceRedValue" id="colorBalanceRedValue"/>
+        <input type="number" size="3" width="3" min="-255" value="0" max="255" name="colorBalanceRedValue" id="colorBalanceRedValue"/>
       </label>
       <br>
       <label for="colorBalanceGreenInput">
         Green: <input type="range" min="-255" value="0" max="255" step="1" name="colorBalanceGreenInput" id="colorBalanceGreenInput"/>
       </label>
       <label for="colorBalanceGreenValue">
-        <input type="number" size="3" width="3" value="0" name="colorBalanceGreenValue" id="colorBalanceGreenValue"/>
+        <input type="number" size="3" width="3" min="-255" value="0" max="255" name="colorBalanceGreenValue" id="colorBalanceGreenValue"/>
       </label>
       <br>
       <label for="colorBalanceBlueInput">
         Green: <input type="range" min="-255" value="0" max="255" step="1" name="colorBalanceBlueInput" id="colorBalanceBlueInput"/>
       </label>
       <label for="colorBalanceBlueValue">
-        <input type="number" size="3" width="3" value="0" name="colorBalanceBlueValue" id="colorBalanceBlueValue"/>
+        <input type="number" size="3" width="3" min="-255" value="0" max="255" name="colorBalanceBlueValue" id="colorBalanceBlueValue"/>
       </label>
       <br>
       <a href="#modal-close"><input type="submit" name="colorBalanceSubmit" value="Submit" class="submitButton"/></a>
