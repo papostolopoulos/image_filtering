@@ -7,9 +7,9 @@
   var width = canvasEl.width;
 
   //set the draw color to black
-  canvas.fillStyle = '#000000';
+  // canvas.fillRect(0, 0, height, width);
+  // canvas.fillStyle = '#000000';
   //this line draws the rectangle at a specific position with a specific height and width
-  canvas.fillRect(0, 0, height, width);
 
   function clearCanvas() {
     var canvas = document.getElementById('myCanvas').getContext("2d");
@@ -79,6 +79,8 @@
   }
 
   function initialize(numInvocations) {
+    canvas.fillRect(0, 0, height, width);
+    canvas.fillStyle = '#000000';
     var twenty = 20;
     for (var i = 0; i < numInvocations; i++) {
       init(twenty);

@@ -3,7 +3,7 @@ function svgToCanvas () {
 
   var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
-  ctx.fillStyle = 'black';
+  // ctx.fillStyle = 'black';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   var DOMURL = self.URL || self.webkitURL || self;
 
