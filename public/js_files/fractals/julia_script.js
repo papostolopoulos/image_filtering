@@ -5,10 +5,18 @@
   var canvasEl = document.getElementById('myCanvas');
   var height = canvasEl.height;
   var width = canvasEl.width;
+
   //set the draw color to black
   canvas.fillStyle = '#000000';
   //this line draws the rectangle at a specific position with a specific height and width
-  canvas.fillRect(0, 0, 600, 600);
+  canvas.fillRect(0, 0, height, width);
+
+  function clearCanvas() {
+    var canvas = document.getElementById('myCanvas').getContext("2d");
+    var canvasEl = document.getElementById('myCanvas');
+    canvas.fillRect(0, 0, height, width);
+    canvas.fillStyle = '#000000';
+  }
 
   function getRandomColor() {
     var letters = '0123456789ABCDEF';
@@ -25,9 +33,11 @@
 
   function conversion(x, y, width, R) {
     // mess with width variable below; larger number stretches out 'tails'
-    var m = R / width,
-      x1 = m * (2 * x - width),
-      y2 = m * (width - 2 * y); // increases stretch from left to right if you subtract higher numbers
+    var rDivider = document.getElementById("rDivider").value;
+    var m = R / rDivider;
+    var x1 = m * (2 * x - width);
+    var y2 = m * (width - 2 * y); // increases stretch from left to right if you subtract higher numbers
+
     return [x1, y2];
   }
 
@@ -41,14 +51,15 @@
   }
 
   function init(maxIterate) {
-    var length = 600,
-      width = 600,
-      c = [0, 1],
-      min = 1,
-      z, flag,
-      rVal = document.getElementById("juliaRValue").value,
-      R = (1 + Math.sqrt(1 + 4 * abs(c))) / rVal,
-      canvas = document.getElementById('myCanvas').getContext("2d");
+    var canvas = document.getElementById('myCanvas').getContext("2d");
+    var rVal = document.getElementById("juliaRValue").value;
+    var c = [0, 1];
+    var R = (1 + Math.sqrt(1 + 4 * abs(c))) / rVal;
+    var length = 600;
+    var width = 600;
+    var flag;
+    var z;
+
     canvas.fillStyle = getRandomColor();
 
     for (var x = 0; x < width; x++) {
@@ -68,18 +79,33 @@
   }
 
   function initialize(numInvocations) {
-    var ten = 10;
+    var twenty = 20;
     for (var i = 0; i < numInvocations; i++) {
-      init(ten);
-      ten += 3;
+      init(twenty);
+      twenty += 3;
     };
   }
 
-  $("#activateJuliaSet").on("click", function(e) {
+  //===================handle form submission and run function==================
+
+  document.getElementById("juliaSetAnchor").addEventListener("submit", function(e) {
     e.preventDefault();
-    var submitValue = document.getElementById("juliaIterations").value,
-      rVal = document.getElementById("juliaRValue").value;
+    window.location = "#modal-close";
+  });
+
+  document.getElementById("juliaSetForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    var submitValue = document.getElementById("juliaIterations").value;
+    var rVal = document.getElementById("juliaRValue").value;
+    console.log(submitValue, rVal);
     initialize(submitValue, rVal);
+    window.location = "#modal";
+  });
+
+  document.getElementById("clearCanvas").addEventListener("click", function(e) {
+    e.preventDefault();
+    window.location = "#modal-close";
+    clearCanvas();
   });
 
 }());

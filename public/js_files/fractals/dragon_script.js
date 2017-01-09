@@ -16,108 +16,101 @@
 // dragon.js: a library to draw dragon curves
 // ------------------------------------------
 // Tested on Chrome 8.0.  Enjoy!
-var DRAGON = (function () {
-   // MATRIX MATH
-   // -----------
-   var matrix = {
-      mult: function ( m, v ) {
-         return [ m[0][0] * v[0] + m[0][1] * v[1],
-                  m[1][0] * v[0] + m[1][1] * v[1] ];
-      },
-      minus: function ( a, b ) {
-         return [ a[0]-b[0], a[1]-b[1] ];
-      },
-      plus: function ( a, b ) {
-         return [ a[0]+b[0], a[1]+b[1] ];
-      }
-   };
-   // SVG STUFF
-   // ---------
-   // Turn a pair of points into an SVG path like "M1 1L2 2".
-   var toSVGpath = function (a, b) {  // type system fail
-      return "M" + a[0] + " " + a[1] + "L" + b[0] + " " + b[1];
-   };
 
-   // DRAGON MAKING
-   // -------------
+// ARGUMENTS for return obj on line 110
+// ---------
+//    svgid    id of <svg> element
+//    ptA      first point [x,y] (from top left)
+//    ptC      second point [x,y]
+//    state    number indicating how many steps to recurse
+//    lr       true/false to make new point on left or right
 
-   // Make a dragon with a better fractal algorithm
-   var fractalMakeDragon = function (svgid, ptA, ptC, state, lr, interval, left, right) {
-      // make a new <path>
-      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute("class", "dragon");
-      path.setAttribute("d", toSVGpath(ptA, ptC));
+// CONFIG
+// ------
+// CSS rules should be made for the following
+//    svg#fractal
+//    svg path.dragon
 
-      // =========================randomize the colors of the fractal
+var DRAGON = (function() {
+  // MATRIX MATH
+  // -----------
+  var matrix = {
+    mult: function(m, v) {
+      return [m[0][0] * v[0] + m[0][1] * v[1],
+        m[1][0] * v[0] + m[1][1] * v[1]
+      ];
+    },
+    minus: function(a, b) {
+      return [a[0] - b[0], a[1] - b[1]];
+    },
+    plus: function(a, b) {
+      return [a[0] + b[0], a[1] + b[1]];
+    }
+  };
+  // SVG STUFF
+  // ---------
+  // Turn a pair of points into an SVG path like "M1 1L2 2".
+  var toSVGpath = function(a, b) { // type system fail
+    return "M" + a[0] + " " + a[1] + "L" + b[0] + " " + b[1];
+  };
 
-      // path.style.color = getRandomColor();
-      // path.style.color = "#FFFFFF";
-      $('.dragon').css({
-         stroke: getRandomColor()
-         // stroke: "#FF0000"
-      });
+  // DRAGON MAKING
+  // -------------
 
-      // =============================end
+  // Make a dragon with a better fractal algorithm
+  var fractalMakeDragon = function(svgid, ptA, ptC, state, lr, interval, left, right) {
+    // make a new <path> div
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute("class", "dragon");
+    path.setAttribute("d", toSVGpath(ptA, ptC));
 
+    $('.dragon').css({
+      stroke: getRandomColor()
+      // stroke: "#FF0000"
+    });
+    // document.getElementsByClass("dragon").style.color = getRandomColor();
 
-      // append the new path to the existing <svg>
-      var svg = document.getElementById("svgid"); // call could be eliminated
-      canvas.appendChild(svg)
-      console.log(svg);
-      svg.appendChild(path);
-      // if we have more iterations to go...
-      if (state > 1) {  //
-         // make a new point, either to the left or right
-         var growNewPoint = function (ptA, ptC, lr) {
-            // var left  = [[ 1/2, -1/2 ], //allow users to change
-            //              [ 1/2, 1/2 ]]; //the elements in the left and right arrays
-            //
-            // var right = [[ 1/2, 1/2 ],
-            //              [ -1/2, 1/2 ]];
+    // append the new path to the existing <svg>
+    var svg = document.getElementById("svgid"); // call could be eliminated
+    console.log('mutah fuckin canvas', canvas);
+    canvas.appendChild(svg)
+    svg.appendChild(path);
+    // if we have more iterations to go...
+    if (state > 1) { //
+      // make a new point, either to the left or right
+      var growNewPoint = function(ptA, ptC, lr) {
 
-            return matrix.plus(ptA, matrix.mult(lr ? left : right,
-                                          matrix.minus(ptC, ptA)));
-         };
-         var ptB = growNewPoint(ptA, ptC, lr, state);
-         // then recurse using each new line, one left, one right
-         var recurse = function () {
-            // when recursing deeper, delete this svg path
-            svg.removeChild(path);
-            // then invoke again for new pair, decrementing the state
-            fractalMakeDragon(svgid, ptB, ptA, state - 1, lr, interval, left, right);
-            fractalMakeDragon(svgid, ptB, ptC, state - 1, lr, interval, left, right);
+        return matrix.plus(ptA, matrix.mult(lr ? left : right,
+          matrix.minus(ptC, ptA)));
+      };
+      var ptB = growNewPoint(ptA, ptC, lr, state);
+      // then recurse using each new line, one left, one right
+      var recurse = function() {
+        // when recursing deeper, delete this svg path
+        svg.removeChild(path);
+        // then invoke again for new pair, decrementing the state
+        fractalMakeDragon(svgid, ptB, ptA, state - 1, lr, interval, left, right);
+        fractalMakeDragon(svgid, ptB, ptC, state - 1, lr, interval, left, right);
 
-         };
-         window.setTimeout(recurse, interval);
-      }
-   };
-   // Export these functions
-   // ----------------------
-   return {
-      fractal: fractalMakeDragon
-      // ARGUMENTS
-      // ---------
-      //    svgid    id of <svg> element
-      //    ptA      first point [x,y] (from top left)
-      //    ptC      second point [x,y]
-      //    state    number indicating how many steps to recurse
-      //    lr       true/false to make new point on left or right
+      };
+      window.setTimeout(recurse, interval);
+    }
+  };
+  // Export these functions
+  // ----------------------
+  return {
+    fractal: fractalMakeDragon
+  };
 
-      // CONFIG
-      // ------
-      // CSS rules should be made for the following
-      //    svg#fractal
-      //    svg path.dragon
-   };
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
 
-   function getRandomColor() {
-      var letters = '0123456789ABCDEF';
-      var color = '#';
-      for (var i = 0; i < 6; i++ ) {
-         color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
-   }
-   return;
+  return;
 
 }());

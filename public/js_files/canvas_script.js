@@ -1,4 +1,4 @@
-console.log(`canvas`);
+"use strict";
 
 const canvas = document.getElementById("myCanvas");
 const context = canvas.getContext('2d');
@@ -17,7 +17,7 @@ function initImageLoader() {
 
   function uploadedFileFunction(ev) {
     var file = ev.target.files[0];
-    openButton.addEventListener('submit', function (event) {
+    openButton.addEventListener('submit', function(event) {
       event.preventDefault();
       handleFile(file);
       window.location = "#modal-close";
@@ -32,8 +32,8 @@ function handleFile(file) {
   if (file.type.match(imageType)) {
     var reader = new FileReader();
 
-//Set up onload function
-    reader.onloadend = function (ev) {
+    //Set up onload function
+    reader.onloadend = function(ev) {
       //Get the image width and height
 
       // Draw image in canvas
@@ -41,7 +41,7 @@ function handleFile(file) {
       tempImageStore.src = ev.target.result;
       canvas.height = tempImageStore.height;
       canvas.width = tempImageStore.width;
-      context.drawImage(tempImageStore,0,0);
+      context.drawImage(tempImageStore, 0, 0);
     }
   }
   reader.readAsDataURL(file);
@@ -49,15 +49,15 @@ function handleFile(file) {
 }
 
 //----------------OPEN IMAGE FROM URL----------------
-openURLButton.addEventListener("submit", function (event) {
+openURLButton.addEventListener("submit", function(event) {
   event.preventDefault()
   var openImageURL = document.getElementById("browseImageURL");
   console.log(openImageURL.value);
   console.log("in the form");
-  img.onload = function () {
+  img.onload = function() {
     canvas.height = img.height;
     canvas.width = img.width;
-    context.drawImage(img,0,0);
+    context.drawImage(img, 0, 0);
     window.location = "#modal-close";
   }
   img.src = openImageURL.value;
@@ -72,7 +72,7 @@ var saveImageSubmit = document.getElementById('saveImageSubmit'); //submit butto
 console.log(saveImageSubmit);
 
 
-saveImageSubmit.addEventListener('click', function (event) {
+saveImageSubmit.addEventListener('click', function(event) {
   event.preventDefault();
   event.stopPropagation();
   var downloadAnchor = document.createElement("a");
@@ -89,26 +89,6 @@ saveImageSubmit.addEventListener('click', function (event) {
   downloadAnchor.click();
   window.location = "#modal-close";
 }, true);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -186,73 +166,73 @@ saveImageSubmit.addEventListener('click', function (event) {
 // if (canvas.getContext) {
 //   var ctx = canvas.getContext("2d");
 
-  //FIRST EXAMPLE
-  // ctx.fillStyle = "rgb(200,0,0)";
-  // ctx.fillRect(10,10,50,50);
-  //
-  // ctx.fillStyle = "rgba(0,0,200,0.5)";
-  // ctx.fillRect(30,30,50,50);
+//FIRST EXAMPLE
+// ctx.fillStyle = "rgb(200,0,0)";
+// ctx.fillRect(10,10,50,50);
+//
+// ctx.fillStyle = "rgba(0,0,200,0.5)";
+// ctx.fillRect(30,30,50,50);
 
-  //RECTANGULAR SHAPE EXAMPLE
-  // ctx.fillRect(25,25,100,100);
-  // ctx.clearRect(45,45,60,60);
-  // ctx.strokeRect(50,50,50,50);
+//RECTANGULAR SHAPE EXAMPLE
+// ctx.fillRect(25,25,100,100);
+// ctx.clearRect(45,45,60,60);
+// ctx.strokeRect(50,50,50,50);
 
-  //DRAWING PATHS (beginPath, closePath, stroke, fill)
-  // ctx.beginPath();
-  // ctx.moveTo(75, 50);
-  // ctx.lineTo(100,75);
-  // ctx.lineTo(100,25);
-  // ctx.fill();
+//DRAWING PATHS (beginPath, closePath, stroke, fill)
+// ctx.beginPath();
+// ctx.moveTo(75, 50);
+// ctx.lineTo(100,75);
+// ctx.lineTo(100,25);
+// ctx.fill();
 
-  //MOVING THE PEN (moveTo())
-  // ctx.beginPath();
-  // ctx.arc(75,75,50,0,Math.PI*2,true); // Outer circle
-  // ctx.moveTo(110,75);
-  // ctx.arc(75,75,35,0,Math.PI,false);  // Mouth (clockwise)
-  // ctx.moveTo(65,65);
-  // ctx.arc(60,65,5,0,Math.PI*2,true);  // Left eye
-  // ctx.moveTo(95,65);
-  // ctx.arc(90,65,5,0,Math.PI*2,true);  // Right eye
-  // ctx.stroke();
+//MOVING THE PEN (moveTo())
+// ctx.beginPath();
+// ctx.arc(75,75,50,0,Math.PI*2,true); // Outer circle
+// ctx.moveTo(110,75);
+// ctx.arc(75,75,35,0,Math.PI,false);  // Mouth (clockwise)
+// ctx.moveTo(65,65);
+// ctx.arc(60,65,5,0,Math.PI*2,true);  // Left eye
+// ctx.moveTo(95,65);
+// ctx.arc(90,65,5,0,Math.PI*2,true);  // Right eye
+// ctx.stroke();
 
-  //LINES (lineTo())
+//LINES (lineTo())
 
-  //Filled triangle
-  // ctx.beginPath();
-  // ctx.moveTo(25,25);
-  // ctx.lineTo(105,25);
-  // ctx.lineTo(25,105);
-  // ctx.fill();g
+//Filled triangle
+// ctx.beginPath();
+// ctx.moveTo(25,25);
+// ctx.lineTo(105,25);
+// ctx.lineTo(25,105);
+// ctx.fill();g
 
-  //Stroked triangle
-  // ctx.beginPath();
-  // ctx.moveTo(125, 125);
-  // ctx.lineTo(125,45);
-  // ctx.lineTo(45,125);
-  // ctx.closePath();
-  // ctx.stroke();
+//Stroked triangle
+// ctx.beginPath();
+// ctx.moveTo(125, 125);
+// ctx.lineTo(125,45);
+// ctx.lineTo(45,125);
+// ctx.closePath();
+// ctx.stroke();
 
-  //ARCS (arc(x, y, radius, startAngle, endAngle, anticlockwise));
-  // for(var i=0;i<4;i++){
-  //   for(var j=0;j<3;j++){
-  //     ctx.beginPath();
-  //     var x = 25+j*50; // x coordinate
-  //     var y = 25+i*50; // y coordinate
-  //     var radius = 20; // Arc radius
-  //     var startAngle = 0; // Starting point on circle
-  //     var endAngle = Math.PI+(Math.PI*j)/2; // End point on circle
-  //     var anticlockwise = i % 2 === 0 ? false : true; // clockwise or anticlockwise
-  //
-  //     ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
-  //
-  //     if (i>1){
-  //       ctx.fill();
-  //     } else {
-  //       ctx.stroke();
-  //     }
-  //   }
-  // }
+//ARCS (arc(x, y, radius, startAngle, endAngle, anticlockwise));
+// for(var i=0;i<4;i++){
+//   for(var j=0;j<3;j++){
+//     ctx.beginPath();
+//     var x = 25+j*50; // x coordinate
+//     var y = 25+i*50; // y coordinate
+//     var radius = 20; // Arc radius
+//     var startAngle = 0; // Starting point on circle
+//     var endAngle = Math.PI+(Math.PI*j)/2; // End point on circle
+//     var anticlockwise = i % 2 === 0 ? false : true; // clockwise or anticlockwise
+//
+//     ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+//
+//     if (i>1){
+//       ctx.fill();
+//     } else {
+//       ctx.stroke();
+//     }
+//   }
+// }
 
 // }
 // else {
